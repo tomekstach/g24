@@ -151,7 +151,7 @@ function nf_scripts()
 
     wp_enqueue_style('nf-style', get_stylesheet_uri());
 
-    wp_enqueue_style('nf-advanced-custom-css', get_template_directory_uri() . '/css/main/acc.css?v=1.0');
+    wp_enqueue_style('nf-advanced-custom-css', get_template_directory_uri() . '/css/main/acc.css');
     wp_enqueue_style('nf-advanced-responsive-css', get_template_directory_uri() . '/css/main/acr.css');
 
     wp_enqueue_style('nf-fa-fonts', get_template_directory_uri() . '/css/fa/all.css');
@@ -467,17 +467,19 @@ function get_category_level($category_id)
 }
 
 // Disable pagination for categories
-function disable_pagination_for_categories($query) {
-    if (!is_admin() && $query->is_main_query() && $query->is_category()) {
+function disable_pagination_for_categories($query)
+{
+    if (! is_admin() && $query->is_main_query() && $query->is_category()) {
         $query->set('posts_per_page', -1); // Wyświetl wszystkie posty
     }
 }
 add_action('pre_get_posts', 'disable_pagination_for_categories');
 
-function replaceSpaceAfterSingleLetters($text) {
-    // Użyj wyrażenia regularnego, aby znaleźć pojedyncze litery z odstępem
-    $pattern = '/\b([a-zA-Z])\s/'; // Szuka pojedynczej litery (np. "a", "b") z odstępem
-    $replacement = '$1&nbsp;';    // Zamienia spację na &nbsp;
+function replaceSpaceAfterSingleLetters($text)
+{
+                                       // Użyj wyrażenia regularnego, aby znaleźć pojedyncze litery z odstępem
+    $pattern     = '/\b([a-zA-Z])\s/'; // Szuka pojedynczej litery (np. "a", "b") z odstępem
+    $replacement = '$1&nbsp;';         // Zamienia spację na &nbsp;
 
     // Zastosuj zamianę w całym tekście
     $result = preg_replace($pattern, $replacement, $text);

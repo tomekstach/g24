@@ -3,7 +3,7 @@ Theme Name: NF
 Author: Net-Factory
 Author URI: https://www.net-factory.pl
 Description: Make your website PRO with Net-Factory.
-Version: 6.0.1
+Version: 7.0.0
 Text Domain: nf
 */
 
@@ -247,6 +247,14 @@ a img.aligncenter {
 	z-index: 100000; /* Above WP toolbar. */
 }
 
+.gcatlist {
+    width: 100%;
+}
+
+.gcatlist .search-filter-field {
+    width: 25%;
+}
+
 .gcatlist .load-more-g24 {
     display: none;
 }
@@ -344,6 +352,10 @@ section.top .container-big.top-banner-container .box .i-row div {
 
     .gcatlist__form {
         flex-direction: column;
+    }
+
+    .gcatlist .search-filter-field {
+        width: 100%;
     }
 }
 
